@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter API Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+</head>
+<header>   
+    <h3>Visionary Squad</h3>
+
+</header>
+<body>
+    <h1>Twitter API Demo</h1>
+    <form action="/create" method="post">
+        <label for="content" class="tweettext">Create Tweet:</label><br>
+        <input type="text" id="content" name="content"><br>
+        <input type="submit" value="Create Tweet">
+    </form>
+    
+    <form action="/delete" method="post">
+        <label for="tweet_id" class="tweettext" id="deletetweettext">Delete Tweet by ID:</label><br>
+        <input type="text" id="tweet_id" name="tweet_id"><br>
+        <input type="submit" value="Delete Tweet">
+    </form>
+
+    {% if request.args.get('message') %}
+        <p>{{ request.args.get('message') }}</p>
+    {% endif %}
+</body>
+</html>
